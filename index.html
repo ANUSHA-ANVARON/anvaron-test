@@ -17,33 +17,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body> 
-    <div id="header">
-  <div class="unique-header-wrapper">
-    <div class="unique-header-container" style="background-color: #121212;">
-      <div class="unique-header-content">
+  <div id="anvaron-main-header">
+  <div class="anvaron-header-wrapper">
+    <div class="anvaron-header-container" style="background-color: #121212 !important;">
+      <div class="anvaron-header-content">
         <!-- Logo -->
-        <div class="unique-logo-section">
-          <a class="unique-logo-link" href="index.html"> 
-            <img src="assets/images/logo.svg" alt="Your Logo" class="unique-logo-img">
+        <div class="anvaron-logo-section">
+          <a class="anvaron-logo-link" href="index.html"> 
+            <img src="assets/images/logo.svg" alt="Your Logo" class="anvaron-logo-img">
           </a>
         </div>
         
         <!-- Desktop Navigation -->
-        <div class="unique-nav-desktop">
-          <ul class="unique-nav-list">
-            <li class="unique-nav-item"><a class="unique-nav-link" href="index.html">Home</a></li>
-            <li class="unique-nav-item"><a class="unique-nav-link" href="ai-solutions.html">AI Solutions</a></li>
-            <li class="unique-nav-item"><a class="unique-nav-link" href="urbanease.html">UrbanEase</a></li>
-            <li class="unique-nav-item"><a class="unique-nav-link" href="industries.html">Industries</a></li>
-            <li class="unique-nav-item"><a class="unique-nav-link" href="founders.html">Founders</a></li>
-            <li class="unique-nav-item"><a class="unique-nav-link" href="careers.html">Careers</a></li>
+        <div class="anvaron-nav-desktop">
+          <ul class="anvaron-nav-list">
+            <li class="anvaron-nav-item"><a class="anvaron-nav-link" href="index.html">Home</a></li>
+            <li class="anvaron-nav-item"><a class="anvaron-nav-link" href="ai-solutions.html">AI Solutions</a></li>
+            <li class="anvaron-nav-item"><a class="anvaron-nav-link" href="urbanease.html">UrbanEase</a></li>
+            <li class="anvaron-nav-item"><a class="anvaron-nav-link" href="industries.html">Industries</a></li>
+            <li class="anvaron-nav-item"><a class="anvaron-nav-link" href="founders.html">Founders</a></li>
+            <li class="anvaron-nav-item"><a class="anvaron-nav-link" href="careers.html">Careers</a></li>
           </ul>
         </div>
         
         <!-- Contact Us Button & Mobile Menu Toggle -->
-        <div class="unique-right-section">
-          <div class="unique-mobile-toggle">
-            <i class="ph ph-list unique-hamburger-icon"></i>
+        <div class="anvaron-right-section">
+          <div class="anvaron-mobile-toggle">
+            <span class="anvaron-hamburger-icon">☰</span>
           </div>
           <a class="button button-blue-hover text-white text-button" href="contact-us.html">
             <span><span></span></span>
@@ -53,29 +53,30 @@
       </div>
       
       <!-- Mobile Menu -->
-      <div class="unique-mobile-menu" id="unique-mobile-menu">
-        <div class="unique-mobile-content">
-          <div class="unique-mobile-header">
-            <a class="unique-mobile-logo" href="index.html"> 
+      <div class="anvaron-mobile-menu" id="anvaron-mobile-menu">
+        <div class="anvaron-mobile-content">
+          <div class="anvaron-mobile-header">
+            <a class="anvaron-mobile-logo" href="index.html"> 
               <img src="assets/images/logo.svg" alt="Your Logo" width="127" height="35">
             </a>
-            <div class="unique-close-btn">
-              <i class="ph-bold ph-x unique-close-icon"></i>
+            <div class="anvaron-close-btn">
+              <span class="anvaron-close-icon">✕</span>
             </div>
           </div>
-          <ul class="unique-mobile-nav">
-            <li><a class="unique-mobile-link" href="index.html"><span>Home</span><i class="ph ph-caret-right"></i></a></li>
-            <li><a class="unique-mobile-link" href="ai-solutions.html"><span>AI Solutions</span><i class="ph ph-caret-right"></i></a></li>
-            <li><a class="unique-mobile-link" href="urbanease.html"><span>UrbanEase</span><i class="ph ph-caret-right"></i></a></li>
-            <li><a class="unique-mobile-link" href="industries.html"><span>Industries</span><i class="ph ph-caret-right"></i></a></li>
-            <li><a class="unique-mobile-link" href="founders.html"><span>Founders</span><i class="ph ph-caret-right"></i></a></li>
-            <li><a class="unique-mobile-link" href="careers.html"><span>Careers</span><i class="ph ph-caret-right"></i></a></li>
-            <li><a class="unique-mobile-link" href="contact-us.html"><span>Contact</span><i class="ph ph-caret-right"></i></a></li>
+          <ul class="anvaron-mobile-nav">
+            <li><a class="anvaron-mobile-link" href="index.html"><span>Home</span><span>→</span></a></li>
+            <li><a class="anvaron-mobile-link" href="ai-solutions.html"><span>AI Solutions</span><span>→</span></a></li>
+            <li><a class="anvaron-mobile-link" href="urbanease.html"><span>UrbanEase</span><span>→</span></a></li>
+            <li><a class="anvaron-mobile-link" href="industries.html"><span>Industries</span><span>→</span></a></li>
+            <li><a class="anvaron-mobile-link" href="founders.html"><span>Founders</span><span>→</span></a></li>
+            <li><a class="anvaron-mobile-link" href="careers.html"><span>Careers</span><span>→</span></a></li>
+            <li><a class="anvaron-mobile-link" href="contact-us.html"><span>Contact</span><span>→</span></a></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
+</div>
     <div id="content">
       <div class="slider-block style-two">
         <div class="slider-main">
@@ -247,11 +248,10 @@
     <script src="./assets/js/phosphor-icons.js"></script>
     <script src="./assets/js/main.min.js"></script>
     <script>
-// Mobile Menu Toggle Functionality
 document.addEventListener('DOMContentLoaded', function() {
-  const mobileToggle = document.querySelector('.unique-mobile-toggle');
-  const mobileMenu = document.querySelector('.unique-mobile-menu');
-  const closeBtn = document.querySelector('.unique-close-btn');
+  const mobileToggle = document.querySelector('#anvaron-main-header .anvaron-mobile-toggle');
+  const mobileMenu = document.querySelector('#anvaron-main-header .anvaron-mobile-menu');
+  const closeBtn = document.querySelector('#anvaron-main-header .anvaron-close-btn');
   
   if (mobileToggle && mobileMenu) {
     mobileToggle.addEventListener('click', function() {
@@ -267,7 +267,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Close menu when clicking outside
   if (mobileMenu) {
     mobileMenu.addEventListener('click', function(e) {
       if (e.target === mobileMenu) {
