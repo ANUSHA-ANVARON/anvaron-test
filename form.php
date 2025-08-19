@@ -7,7 +7,7 @@ if ($_POST) {
     $message = htmlspecialchars($_POST['message']);
     
     // Email configuration
-    $to = "sathishk2212@gmail.com";
+    $to = "harshavardhan.kuthadi@anvaron.in";
     $subject = "New Contact Form Submission";
     $body = "Name: $name\nEmail: $email\nPhone: $phone\nCompany: $company\nMessage: $message";
     $headers = "From: $email";
