@@ -1,30 +1,77 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $phone = htmlspecialchars($_POST['phone']);
-    $company = htmlspecialchars($_POST['company']);
-    $message = htmlspecialchars($_POST['message']);
+declare(strict_types=1);
 
-    // Email configuration
-    $to = "sathishk2212@gmail.com";
-    $subject = "New Contact Form Submission";
-    $body = "Name: $name\nEmail: $email\nPhone: $phone\nCompany: $company\nMessage: $message";
-    $headers = "From: $email";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-    if (mail($to, $subject, $body, $headers)) {
-        // Redirect with success message
-        header("Location: " . $_SERVER['HTTP_REFERER'] . "?status=success");
-        exit;
-    } else {
-        // Redirect with failure message
-        header("Location: " . $_SERVER['HTTP_REFERER'] . "?status=fail");
-        exit;
-    }
-} else {
-    // If accessed without POST, show 405 error
-    header($_SERVER["SERVER_PROTOCOL"] . " 405 Method Not Allowed");
-    echo "405 - HTTP verb used to access this page is not allowed.";
-    exit;
+// Adjust paths if you put PHPMailer elsewhere
+require __DIR__ . '/assets/phpmailer/src/PHPMailer.php';
+require __DIR__ . '/assets/phpmailer/src/SMTP.php';
+require __DIR__ . '/assets/phpmailer/src/Exception.php';
+
+// Basic sanitization helpers
+function s($v) { return trim(filter_var($v ?? '', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)); }
+function valid_email($v) { return (bool)filter_var($v ?? '', FILTER_VALIDATE_EMAIL); }
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+  http_response_code(405);
+  exit('Method Not Allowed');
 }
-?>
+
+// Where to go back after submit (used by your pages' ?status logic)
+$redirect = basename($_POST['redirect'] ?? 'contact-us.html');
+
+// Form fields (adjust names if your inputs differ)
+$name    = s($_POST['name']    ?? '');
+$email   = $_POST['email']     ?? '';
+$phone   = s($_POST['phone']   ?? '');
+$company = s($_POST['company'] ?? '');
+$message = trim($_POST['message'] ?? '');
+$honeypot = $_POST['website'] ?? ''; // bots fill this
+
+// If honeypot is filled, pretend success (silently drop)
+if ($honeypot !== '') {
+  header("Location: {$redirect}?status=success");
+  exit;
+}
+
+// Simple required checks
+if (!$name || !valid_email($email) || !$message) {
+  header("Location: {$redirect}?status=fail");
+  exit;
+}
+
+$mail = new PHPMailer(true);
+try {
+  // Gmail SMTP settings
+  $mail->isSMTP();
+  $mail->Host       = 'smtp.gmail.com';
+  $mail->SMTPAuth   = true;
+  $mail->Username   = 'anvaronforms@gmail.com';
+  $mail->Password   = 'wqei qail heoq bcdg';
+  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+  $mail->Port       = 587; // TLS
+  $mail->CharSet    = 'UTF-8';
+
+  // From must be your Gmail when using Gmail SMTP
+  $mail->setFrom('anvaronforms@gmail.com', 'Anvaron Website');
+  // Where you want to receive the leads:
+  $mail->addAddress('anvaronforms@gmail.com', 'Forms Inbox');
+  // Let replies go to the sender
+  $mail->addReplyTo($email, $name);
+
+  $mail->Subject = 'New website enquiry';
+  $mail->Body    =
+    "Name: {$name}\n"
+    ."Email: {$email}\n"
+    ."Phone: {$phone}\n"
+    ."Company: {$company}\n\n"
+    ."Message:\n{$message}\n";
+
+  $mail->send();
+  header("Location: {$redirect}?status=success");
+} catch (Exception $e) {
+  // You can log $mail->ErrorInfo to a file if needed
+  header("Location: {$redirect}?status=fail");
+}
+exit;
