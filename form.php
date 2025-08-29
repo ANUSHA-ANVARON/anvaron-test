@@ -47,16 +47,16 @@ try {
   $mail->isSMTP();
   $mail->Host       = 'smtp.gmail.com';
   $mail->SMTPAuth   = true;
-  $mail->Username   = 'anvaronforms@gmail.com';
-  $mail->Password   = 'wqei qail heoq bcdg';
+  $mail->Username   = 'harshavardhan.kuthadi@anvaron.in';
+  $mail->Password   = 'aezakmi@6';
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->Port       = 587; // TLS
   $mail->CharSet    = 'UTF-8';
 
   // From must be your Gmail when using Gmail SMTP
-  $mail->setFrom('anvaronforms@gmail.com', 'Anvaron Website');
+  $mail->setFrom('harshavardhan.kuthadi@anvaron.in', 'Anvaron Website');
   // Where you want to receive the leads:
-  $mail->addAddress('anvaronforms@gmail.com', 'Forms Inbox');
+  $mail->addAddress('harshavardhan.kuthadi@anvaron.in', 'Forms Inbox');
   // Let replies go to the sender
   $mail->addReplyTo($email, $name);
 
