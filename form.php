@@ -45,7 +45,7 @@ $mail = new PHPMailer(true);
 try {
   // Gmail SMTP settings
   $mail->isSMTP();
-  $mail->Host       = 'smtp.gmail.com';
+  $mail->Host       = 'smtp.office365.com';
   $mail->SMTPAuth   = true;
   $mail->Username   = 'harshavardhan.kuthadi@anvaron.in';
   $mail->Password   = 'aezakmi@6';
